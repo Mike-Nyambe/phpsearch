@@ -18,17 +18,21 @@
             }
             $db_results = mysqli_num_rows($search_result);
 
+            echo "<h5> There are ".$db_results." results found</h5>";
+
             if($db_results > 0){
 
                 while($row = mysqli_fetch_assoc($search_result)){
                     echo"
-                           
-                        <div class='cont-box'>
-                            <h4>".$row['search_title']."</h4>
-                            <p>".$row['search_content']."</p>
-                            <p>".$row['search_date']."</p>
-                            <p>".$row['search_author']."</p>
-                        </div
+                         
+                        <a href='article.php?title=".$row['search_title']."&date=".$row['search_date']."'>
+                            <div class='cont-box'>
+                                <h4>".$row['search_title']."</h4>
+                                <p>".$row['search_content']."</p>
+                                <p>".$row['search_date']."</p>
+                                <p>".$row['search_author']."</p>
+                            </div>
+                        </a>
 
                     ";
                 }
